@@ -1,13 +1,67 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import NavBar from "./NavBar";
+import { NavLink } from "react-router-dom";
 import Home from "./Home";
 import Actors from "./Actors";
 import Directors from "./Directors";
 import Movies from "./Movies";
 
 function App() {
-  return <div>{/*{code here}*/}</div>;
+
+  return (
+  <div>
+    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <div className="container-fluid">
+          <NavLink className="navbar-brand" exact to="/">
+            Home
+          </NavLink>
+          <button
+            className="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span className="navbar-toggler-icon"></span>
+          </button>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            <ul className="navbar-nav">
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="/movies">
+                  Movies
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="/directors">
+                  Directors
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink className="nav-link" exact to="/actors">
+                  Actors
+                </NavLink>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/movies">
+          <Movies />
+        </Route>
+        <Route exact path="/directors">
+          <Directors />
+        </Route>
+        <Route exact path="/actors">
+          <Actors />
+        </Route>
+      </Switch>
+  </div>);
 }
 
 export default App;
